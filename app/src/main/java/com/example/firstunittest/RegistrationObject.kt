@@ -7,6 +7,22 @@ object RegistrationObject {
         password: String,
         confirmPassword: String
     ): Boolean {
-        return true
+        var inputCorrect = true
+        for (eachEmail in existingEmails) {
+            if (email == eachEmail) {
+                inputCorrect = false
+                break
+            }
+        }
+        if (email == "") {
+            inputCorrect = false
+        }
+        if (password == "" || confirmPassword == "") {
+            inputCorrect = false
+        }
+        if (password != confirmPassword) {
+            inputCorrect = false
+        }
+        return inputCorrect
     }
 }
